@@ -1,0 +1,9 @@
+ body {
+   margin: 0;
+   hieght: 100vh;
+
+ }
+
+ canvas{
+   dsiplay:block;
+ }
