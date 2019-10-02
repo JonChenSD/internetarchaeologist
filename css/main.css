@@ -1,9 +1,9 @@
+
  body {
-   margin: 0;
-   hieght: 100vh;
+    margin: 0;
+    height: 100vh;
+}
 
- }
-
- canvas{
-   dsiplay:block;
- }
+canvas {
+    display: block;
+}
