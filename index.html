@@ -55,11 +55,12 @@
       folder.position.z = 0;
     } */
     var loader = new THREE.GLTFLoader();
+    var folder = data.scene;
 loader.crossOrigin = true;
 loader.load( 'folder.glb', function ( data ) {
 
 
-    var folder = data.scene;
+  //  var folder = data.scene;
      folder.position.set(0, 0, 0);
 //     object.rotation.set(Math.PI / -2, 0, 0);
 
