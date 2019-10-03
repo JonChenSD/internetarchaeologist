@@ -117,7 +117,7 @@ loader.load( 'folder.glb', function ( data ) {
 
 
 
-      var controls = new THREE.DragControls( objects, camera, renderer.domElement );
+      var controls = new THREE.DragControls( folder, camera, renderer.domElement );
 
       controls.addEventListener( 'hoveron', function ( event ) {
 
