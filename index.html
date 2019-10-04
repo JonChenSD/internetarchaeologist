@@ -118,7 +118,7 @@
 
 
       let screenLog = document.querySelector('#screen-log');
-      let touchLog = document.querySelector('#screen-log');
+      let touchLog = document.querySelector('#touch-log');
 
     function logKey(e) {
 
@@ -133,7 +133,7 @@
 
           touchxcord = e.touches[0].clientX;
           touchycord = e.touches[0].clientY;
-        
+
 
 
       touchLog.innerText = `
@@ -144,16 +144,16 @@
       controls.addEventListener( 'dragstart', function ( event ) {
         //  document.getElementById("demo").innerHTML = xcord;
           event.object.position.z = 5;
-          document.getElementById("demo").innerHTML = xcord;
-          if(mobile == true)
-          {
+          //document.getElementById("demo").innerHTML = xcord;
+          //if(mobile == true)
+        /*  {
             _mouse.x = touchxcord;
             _mouse.y = touchycord;
           }
-          else {
+          else { */
             _mouse.x = xcord;
             _mouse.y = ycord;
-          }
+    //      }
 
 
         } );
@@ -182,15 +182,15 @@
            /*if (_mouse.x < xcord+100 && _mouse.x > xcord-100 && _mouse.y < ycord + 100 && _mouse.y > ycord - 100){
              window.open("https://www.w3schools.com");
            } */
-           if(mobile == true) {
+           /*if(mobile == true) {
              if (_mouse.x == touchxcord && _mouse.y == touchycord){
                window.open("http://nooooooooooooooo.com/");
              }
-           } else {
+           } else {  */
              if (_mouse.x == xcord && _mouse.y == ycord){
                window.open("http://nooooooooooooooo.com/");
              }
-           }
+          // }
 
         //   pressed = 0;
 
