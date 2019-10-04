@@ -148,7 +148,7 @@
         //  document.getElementById("demo").innerHTML = xcord;
 
           event.object.position.z = 5;
-        
+
           //document.getElementById("demo").innerHTML = xcord;
           if(mobile == true)
           {
@@ -169,12 +169,12 @@
         //  document.getElementById("demo").innerHTML = xcord;
           event.object.position.z = 5;
           document.getElementById("demo").innerHTML = xcord;
-      /*    if (pressed == 0) {
+          if (pressed == 0) {
 
-            _mouse.x = xcord;
-            _mouse.y = ycord;
+            _mouse.x = touchxcord;
+            _mouse.y = touchycord;
             pressed = 1;
-          } */
+          }
 
 
 
@@ -189,7 +189,7 @@
            /*if (_mouse.x < xcord+100 && _mouse.x > xcord-100 && _mouse.y < ycord + 100 && _mouse.y > ycord - 100){
              window.open("https://www.w3schools.com");
            } */
-
+           pressed = 0;
            if(mobile == true) {
              if (_mouse.x == touchxcord && _mouse.y == touchycord){
                window.open("http://nooooooooooooooo.com/");
