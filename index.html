@@ -71,12 +71,21 @@
     } */
       let drags = document.querySelector('#drag-start');
     var mobile = true;
+    var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+		var element = document.getElementById('text');
+		if (isMobile) {
+  			mobile = true;
+		} else {
+			mobile = false;
+      drags.innerText = `
+        started`
 
+		}
     if(detector.mobile() == null){
       mobile = false;
     }else {
-      drags.innerText = `
-        started`
+    //  drags.innerText = `
+    //    started`;
     }
 
     var geometry = new THREE.BoxGeometry( 5, 5, 5 );
