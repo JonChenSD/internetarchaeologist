@@ -33,6 +33,7 @@
     var _mouse = new THREE.Vector2();
     var src = document.getElementById("source");
     var detector = new MobileDetect(window.navigator.useragent);
+    console.log( "Mobile: " + detector.mobile());
 
     var camera = new THREE.PerspectiveCamera(10, window.innerWidth/window.innerHeight, 0.1, 1000)
     camera.position.z = 100;
@@ -67,10 +68,10 @@
       folder.position.y = 0;
       folder.position.z = 0;
     } */
-    var mobile = false;
+    var mobile = true;
 
-    if(detector.mobile() == true){
-      mobile = true;
+    if(detector.mobile() == null){
+      mobile = false;
     }
 
     var geometry = new THREE.BoxGeometry( 5, 5, 5 );
@@ -129,10 +130,10 @@
     }
     document.addEventListener('touchmove', tlogKey);
       function tlogKey(e) {
-        if(mobile == true){
+
           touchxcord = e.touches[0].clientX;
           touchycord = e.touches[0].clientY;
-        }
+        
 
 
       touchLog.innerText = `
