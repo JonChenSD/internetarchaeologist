@@ -193,7 +193,7 @@
     //  xcord = e.screenX;
     //  ycord = e.screenY;
       touchLog.innerText = `
-        Touch X/Y: ${e.touches[0].screenX}, ${e.touches[0].screenY}`;
+        Touch X/Y: ${e.touches[0].clientX}, ${e.touches[0].clientY}`;
     }
       var controls = new THREE.DragControls( objects, camera, renderer.domElement );
 
