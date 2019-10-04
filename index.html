@@ -148,13 +148,14 @@
         //  document.getElementById("demo").innerHTML = xcord;
 
           event.object.position.z = 5;
-          drags.innerText = `
-            started`
+        
           //document.getElementById("demo").innerHTML = xcord;
           if(mobile == true)
           {
             _mouse.x = touchxcord;
             _mouse.y = touchycord;
+            drags.innerText = `
+              started`
           }
           else {
             _mouse.x = xcord;
