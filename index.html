@@ -129,9 +129,11 @@
     }
     document.addEventListener('touchmove', tlogKey);
       function tlogKey(e) {
+        if(mobile == true){
+          touchxcord = e.touches[0].clientX;
+          touchycord = e.touches[0].clientY;
+        }
 
-        touchxcord = e.touches[0].clientX;
-        touchycord = e.touches[0].clientY;
 
       touchLog.innerText = `
         Touch X/Y: ${e.touches[0].clientX}, ${e.touches[0].clientY}`;
