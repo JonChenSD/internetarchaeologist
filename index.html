@@ -127,19 +127,17 @@
         render.render(scene, camera)
       }
 
-      function detectmob() {
-     if(window.innerWidth <= 800 && window.innerHeight <= 600) {
-       mobile = true;
-     } else {
-       mobile = false;
-     }
-  }
+
+
 
       let screenLog = document.querySelector('#screen-log');
     document.addEventListener('mousemove', logKey);
 
     function logKey(e) {
-      if(mobile != true){
+      if(window.innerWidth <= 800 && window.innerHeight <= 600) {
+        xcord = event.touches[0].pageX;
+        ycord = event.touches[0].pageY;
+      } else {
         xcord = e.screenX;
         ycord = e.screenY;
       }
@@ -185,9 +183,16 @@
            /*if (_mouse.x < xcord+100 && _mouse.x > xcord-100 && _mouse.y < ycord + 100 && _mouse.y > ycord - 100){
              window.open("https://www.w3schools.com");
            } */
-           if (_mouse.x == xcord && _mouse.y == ycord){
-             window.open("http://nooooooooooooooo.com/");
+           if(window.innerWidth <= 800 && window.innerHeight <= 600) {
+             if (_mouse.x == xcord && _mouse.y == ycord){
+               window.open("http://nooooooooooooooo.com/");
+             }
+           } else {
+             if (_mouse.x == xcord && _mouse.y == ycord){
+               window.open("http://nooooooooooooooo.com/");
+             }
            }
+
         //   pressed = 0;
 
 
