@@ -10,6 +10,7 @@
 <body>
   <p id="demo"></p>
   <p id="screen-log"></p>
+  <p id="touch-log"></p>
   <script src=js/three.js></script>
   <script src=js/DragControls.js></script>
   <script src=js/Tween.js></script>
@@ -25,8 +26,11 @@
     var pressed = 0;
     var xcord = 0;
     var ycord = 0;
+    var touchxcord = 0;
+    var touchycord = 0;
     var scene = new THREE.Scene();
     var _mouse = new THREE.Vector2();
+    var src = document.getElementById("source");
 
     var camera = new THREE.PerspectiveCamera(10, window.innerWidth/window.innerHeight, 0.1, 1000)
     camera.position.z = 100;
@@ -131,8 +135,32 @@
 
 
       let screenLog = document.querySelector('#screen-log');
-    document.addEventListener('mousemove', logKey);
+      src.addEventListener('touchstart', function(e) {
+  // Cache the client X/Y coordinates
+      touchxcordX = e.touches[0].clientX;
+      touchycord = e.touches[0].clientY;
+      touchLog.innerText = `
 
+        Touch X/Y: ${event.touches[0].pageX}, ${event.touches[0].pageY}`;
+}, false);
+    document.addEventListener('mousemove', logKey);
+  //  document.addEventListener("touchmove", logTouch);
+  //  function logTouch(e) {
+      /*if(window.innerWidth <= 800 && window.innerHeight <= 600) {
+        xcord = event.touches[0].pageX;
+        ycord = event.touches[0].pageY;
+      } else {
+        xcord = e.screenX;
+        ycord = e.screenY;
+      } */
+    //  touchxcord = event.touches[0].pageX;
+  //    touchycord = event.touches[0].pageY;
+    //  xcord = e.screenX;
+    //  ycord = e.screenY;
+  //    touchLog.innerText = `
+
+    //    Touch X/Y: ${event.touches[0].pageX}, ${event.touches[0].pageY}`;
+  //  }
     function logKey(e) {
       /*if(window.innerWidth <= 800 && window.innerHeight <= 600) {
         xcord = event.touches[0].pageX;
@@ -141,9 +169,10 @@
         xcord = e.screenX;
         ycord = e.screenY;
       } */
-      xcord = event.touches[0].pageX;
-      ycord = event.touches[0].pageY;
-
+      //xcord = event.touches[0].pageX;
+    //  ycord = event.touches[0].pageY;
+      xcord = e.screenX;
+      ycord = e.screenY;
       screenLog.innerText = `
         Screen X/Y: ${e.screenX}, ${e.screenY}
         Client X/Y: ${e.clientX}, ${e.clientY}`;
