@@ -135,15 +135,17 @@
 
 
       let screenLog = document.querySelector('#screen-log');
-      src.addEventListener('touchstart', function(e) {
+      let touchLog = document.querySelector('#touch-log');
+    /*  src.addEventListener('touchstart', function(e) {
   // Cache the client X/Y coordinates
       touchxcordX = e.touches[0].clientX;
       touchycord = e.touches[0].clientY;
       touchLog.innerText = `
 
         Touch X/Y: ${event.touches[0].pageX}, ${event.touches[0].pageY}`;
-}, false);
+}, false); */
     document.addEventListener('mousemove', logKey);
+    document.addEventListener('touchmove', tlogKey);
   //  document.addEventListener("touchmove", logTouch);
   //  function logTouch(e) {
       /*if(window.innerWidth <= 800 && window.innerHeight <= 600) {
@@ -178,6 +180,21 @@
         Client X/Y: ${e.clientX}, ${e.clientY}`;
     }
 
+    function tlogKey(e) {
+      /*if(window.innerWidth <= 800 && window.innerHeight <= 600) {
+        xcord = event.touches[0].pageX;
+        ycord = event.touches[0].pageY;
+      } else {
+        xcord = e.screenX;
+        ycord = e.screenY;
+      } */
+      //xcord = event.touches[0].pageX;
+    //  ycord = event.touches[0].pageY;
+      xcord = e.screenX;
+      ycord = e.screenY;
+      touchLog.innerText = `
+        Touch X/Y: ${e.clientX}, ${e.clientY}`;
+    }
       var controls = new THREE.DragControls( objects, camera, renderer.domElement );
 
       controls.addEventListener( 'dragstart', function ( event ) {
