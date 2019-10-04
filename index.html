@@ -69,10 +69,14 @@
       folder.position.y = 0;
       folder.position.z = 0;
     } */
+      let drags = document.querySelector('#drag-start');
     var mobile = true;
 
     if(detector.mobile() == null){
       mobile = false;
+    }else {
+      drags.innerText = `
+        started`
     }
 
     var geometry = new THREE.BoxGeometry( 5, 5, 5 );
@@ -120,7 +124,7 @@
 
       let screenLog = document.querySelector('#screen-log');
       let touchLog = document.querySelector('#touch-log');
-      let drags = document.querySelector('#drag-start');
+
       document.addEventListener('mousemove', logKey);
 
     function logKey(e) {
