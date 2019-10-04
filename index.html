@@ -135,7 +135,7 @@
 
 
       let screenLog = document.querySelector('#screen-log');
-      let touchLog = document.querySelector('#touch-log');
+      let touchLog = document.querySelector('#screen-log');
     /*  src.addEventListener('touchstart', function(e) {
   // Cache the client X/Y coordinates
       touchxcordX = e.touches[0].clientX;
@@ -145,7 +145,7 @@
         Touch X/Y: ${event.touches[0].pageX}, ${event.touches[0].pageY}`;
 }, false); */
     document.addEventListener('mousemove', logKey);
-    document.addEventListener('touchmove', tlogKey);
+
   //  document.addEventListener("touchmove", logTouch);
   //  function logTouch(e) {
       /*if(window.innerWidth <= 800 && window.innerHeight <= 600) {
@@ -171,16 +171,16 @@
         xcord = e.screenX;
         ycord = e.screenY;
       } */
-      //xcord = event.touches[0].pageX;
+      //xcord = e.touches[0].pageX;
     //  ycord = event.touches[0].pageY;
       xcord = e.screenX;
       ycord = e.screenY;
       screenLog.innerText = `
         Screen X/Y: ${e.screenX}, ${e.screenY}
-        Client X/Y: ${e.clientX}, ${e.clientY}`;
+        Touch X/Y: ${e.clientX}, ${e.clientY}`;
     }
-
-    function tlogKey(e) {
+    document.addEventListener('touchmove', tlogKey);
+      function tlogKey(e) {
       /*if(window.innerWidth <= 800 && window.innerHeight <= 600) {
         xcord = event.touches[0].pageX;
         ycord = event.touches[0].pageY;
@@ -190,10 +190,10 @@
       } */
       //xcord = event.touches[0].pageX;
     //  ycord = event.touches[0].pageY;
-      xcord = e.screenX;
-      ycord = e.screenY;
+    //  xcord = e.screenX;
+    //  ycord = e.screenY;
       touchLog.innerText = `
-        Touch X/Y: ${e.clientX}, ${e.clientY}`;
+        Touch X/Y: ${e.touches[0].screenX}, ${e.touches[0].screenY}`;
     }
       var controls = new THREE.DragControls( objects, camera, renderer.domElement );
 
