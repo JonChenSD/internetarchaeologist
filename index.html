@@ -167,6 +167,8 @@
           //document.getElementById("demo").innerHTML = xcord;
           if(touchxcord != 0 & touchycord != 0)
           {
+            drags.innerText = `
+              started ${touchxcord}, ${touchycord}`
             _mouse.x = touchxcord;
             _mouse.y = touchycord;
             pressed = 1;
