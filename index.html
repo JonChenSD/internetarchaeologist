@@ -147,13 +147,15 @@
     document.addEventListener('touchmove', tlogKey);
       function tlogKey(e) {
 
-          touchxcord = e.touches[0].clientX;
-          touchycord = e.touches[0].clientY;
+
+
+          touchxcord = parseInt(e.touches[0].clientX);
+          touchycord = parseInt(e.touches[0].clientY);
 
 
 
       touchLog.innerText = `
-        Touch X/Y: ${e.touches[0].clientX}, ${e.touches[0].clientY}`;
+        Touch X/Y: ${parseInt(e.touches[0].clientX)}, ${parseInt(e.touches[0].clientY)}`;
     }
       var controls = new THREE.DragControls( objects, camera, renderer.domElement );
 
