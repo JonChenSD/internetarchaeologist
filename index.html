@@ -185,14 +185,14 @@
         //  document.getElementById("demo").innerHTML = xcord;
           event.object.position.z = 5;
           document.getElementById("demo").innerHTML = xcord;
-          if (pressed == 0) {
+          if (pressed == 1) {
         //    drags.innerText = `
         //      started ${touchxcord}, ${touchycord}`
           drags.innerText = `
             started ${touchxcord}, ${touchycord}`
             _mouse.x = touchxcord;
             _mouse.y = touchycord;
-            pressed = 1;
+            pressed = pressed + 1;
           }
 
 
