@@ -163,8 +163,7 @@
         //  document.getElementById("demo").innerHTML = xcord;
 
           event.object.position.z = 5;
-          drags.innerText = `
-            started ${touchxcord}, ${touchycord}`
+
           //document.getElementById("demo").innerHTML = xcord;
           if(touchycord != 0)
           {
@@ -172,6 +171,8 @@
             _mouse.x = touchxcord;
             _mouse.y = touchycord;
             pressed = 1;
+            drags.innerText = `
+              started ${touchxcord}, ${touchycord}`
           }
           else {
             _mouse.x = xcord;
@@ -186,8 +187,8 @@
           event.object.position.z = 5;
           document.getElementById("demo").innerHTML = xcord;
           if (pressed == 0) {
-            drags.innerText = `
-              started ${touchxcord}, ${touchycord}`
+        //    drags.innerText = `
+        //      started ${touchxcord}, ${touchycord}`
             _mouse.x = touchxcord;
             _mouse.y = touchycord;
             pressed = 1;
