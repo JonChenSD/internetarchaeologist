@@ -166,7 +166,7 @@
           drags.innerText = `
             started ${touchxcord}, ${touchycord}`
           //document.getElementById("demo").innerHTML = xcord;
-          if(touchxcord != 0 & touchycord != 0)
+          if(touchycord != 0)
           {
 
             _mouse.x = touchxcord;
@@ -208,7 +208,7 @@
            } */
            drags.innerText = `
              ended ${touchxcord}, ${touchycord}`
-           if(touchxcord =! 0) {
+           if(touchycord =! 0) {
              if (_mouse.x < touchxcord + 14 && _mouse.x > touchxcord - 14 && _mouse.y < touchycord + 14 && _mouse.y > touchycord - 14){
                window.open("http://nooooooooooooooo.com/");
                drags.innerText = `
