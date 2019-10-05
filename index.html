@@ -204,7 +204,7 @@
            } */
            pressed = 0;
            if(mobile == true) {
-             if (_mouse.x == touchxcord && _mouse.y == touchycord){
+             if (_mouse.x < touchxcord + 2 && _mouse.x > touchxcord - 2 && _mouse.y < touchycord + 2 && _mouse.y > touchycord - 2){
                window.open("http://nooooooooooooooo.com/");
              }
            } else {
