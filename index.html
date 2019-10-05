@@ -167,8 +167,7 @@
           {
             _mouse.x = touchxcord;
             _mouse.y = touchycord;
-            drags.innerText = `
-              started`
+
           }
           else {
             _mouse.x = xcord;
@@ -183,7 +182,8 @@
           event.object.position.z = 5;
           document.getElementById("demo").innerHTML = xcord;
           if (pressed == 0) {
-
+            drags.innerText = `
+              started`
             _mouse.x = touchxcord;
             _mouse.y = touchycord;
             pressed = 1;
@@ -202,7 +202,7 @@
            /*if (_mouse.x < xcord+100 && _mouse.x > xcord-100 && _mouse.y < ycord + 100 && _mouse.y > ycord - 100){
              window.open("https://www.w3schools.com");
            } */
-           pressed = 0;
+
            if(mobile == true) {
              if (_mouse.x < touchxcord + 2 && _mouse.x > touchxcord - 2 && _mouse.y < touchycord + 2 && _mouse.y > touchycord - 2){
                window.open("http://nooooooooooooooo.com/");
@@ -212,6 +212,7 @@
                window.open("http://nooooooooooooooo.com/");
              }
            }
+           pressed = 0;
 
         //   pressed = 0;
 
