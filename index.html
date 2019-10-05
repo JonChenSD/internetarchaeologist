@@ -171,8 +171,7 @@
             _mouse.x = touchxcord;
             _mouse.y = touchycord;
             pressed = 1;
-            drags.innerText = `
-              started ${touchxcord}, ${touchycord}`
+
           }
           else {
             _mouse.x = xcord;
@@ -189,6 +188,8 @@
           if (pressed == 0) {
         //    drags.innerText = `
         //      started ${touchxcord}, ${touchycord}`
+          drags.innerText = `
+            started ${touchxcord}, ${touchycord}`
             _mouse.x = touchxcord;
             _mouse.y = touchycord;
             pressed = 1;
