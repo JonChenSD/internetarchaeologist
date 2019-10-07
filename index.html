@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css\main.css">
 </head>
 <body>
-  <p id="demo"></p>
+
   <p id="screen-log"></p>
   <p id="touch-log"></p>
   <p id="drag-start"></p>
@@ -30,14 +30,26 @@
     var ycord = 0;
     var touchxcord = 0;
     var touchycord = 0;
+    var mouse = new THREE.Vector2(), INTERSECTED;
+
+    var _plane = new THREE.Plane();
+    var raycaster = new THREE.Raycaster();
+    var _intersection = new THREE.Vector3();
+    var link = "jon";
+
     var scene = new THREE.Scene();
     var _mouse = new THREE.Vector2();
     var src = document.getElementById("source");
     var detector = new MobileDetect(window.navigator.useragent);
+    var itstheobject;
     console.log( "Mobile: " + detector.mobile());
+  //  console.log( touchObject());
 
-    var camera = new THREE.PerspectiveCamera(10, window.innerWidth/window.innerHeight, 0.1, 1000)
-    camera.position.z = 100;
+
+
+    var camera = new THREE.PerspectiveCamera(70, window.innerWidth/window.innerHeight, 0.1, 10000)
+    camera.position.set(0,0,300);
+    scene.add(camera);
 
     var renderer = new THREE.WebGLRenderer({antialias: true});
     renderer.setClearColor("#e5e5e5");
@@ -77,8 +89,8 @@
   			mobile = true;
 		} else {
 			mobile = false;
-      drags.innerText = `
-        started`
+    //  drags.innerText = `
+      //  started`
 
 		}
     if(detector.mobile() == null){
@@ -88,32 +100,134 @@
     //    started`;
     }
 
-    var geometry = new THREE.BoxGeometry( 5, 5, 5 );
+    var geometry = new THREE.BoxGeometry( 20, 20, 20 );
 
     var objects = [];
 
-    var light = new THREE.PointLight(0xFFFFFF, 1, 1000)
-    light.position.set(10,10,40)
+    var light = new THREE.PointLight(0xFFFFFF, 5, 3000)
+    light.position.set(0,0,300)
     scene.add(light);
 
     var object = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( {color: 0xffff00} ));
-     object.position.x = (window.innerWidth * .02);
-     object.position.y = 0;
-     object.position.z = 0;
+     object.position.x = (Math.random() * 180) - 90;
+     object.position.y = (Math.random() * 180) - 90;
+     object.position.z = (Math.random() * 40) - 20;
 
-
+     object.userData = {
+				URL: 'https://www.youtube.com/watch?v=5JHrn5CgGno'
+			};
 
      scene.add ( object );
 
      objects.push( object);
+
+
+
+
+
+     var object2 = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( {color: 0xFF00F7} ));
+      object2.position.x = (Math.random() * 180) - 90;
+      object2.position.y = (Math.random() * 180) - 90;
+      object2.position.z = (Math.random() * 40) - 20;
+
+      object2.userData = {
+ 				URL: 'https://www.reddit.com/r/place/top/?t=all'
+ 			};
+
+
+      scene.add ( object2 );
+
+      objects.push( object2);
   //   objects.push( folder);
+
+  var object3 = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( {color: 0x00FF09} ));
+   object3.position.x = (Math.random() * 180) - 90;
+   object3.position.y = (Math.random() * 180) - 90;
+   object3.position.z = (Math.random() * 40) - 20;
+
+   object3.userData = {
+     URL: 'https://www.youtube.com/watch?v=LOKY7ER6Nsg&list=LLkOjIiUe_rBgcc90gJwhmzg&index=119&t=0s'
+   };
+
+
+
+   scene.add ( object3 );
+
+   objects.push( object3);
+
+   var object4 = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( {color: 0x0022FF} ));
+    object4.position.x = (Math.random() * 180) - 90;
+    object4.position.y = (Math.random() * 180) - 90;
+    object4.position.z = (Math.random() * 40) - 20;
+
+    object4.userData = {
+      URL: 'https://99designs.com/profiles/1868572'
+    };
+
+       scene.add ( object4 );
+
+       objects.push( object4);
+
+    var object5 = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( {color: 0xFF0000} ));
+     object5.position.x = (Math.random() * 180) - 90;
+     object5.position.y = (Math.random() * 180) - 90;
+     object5.position.z = (Math.random() * 40) - 20;
+
+     object5.userData = {
+       URL: 'https://intarch.ac.uk/'
+     };
+
+     scene.add ( object5 );
+
+     objects.push( object5);
+
+     var object6 = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( {color: 0x33FFFA} ));
+      object6.position.x = (Math.random() * 180) - 90;
+      object6.position.y = (Math.random() * 180) - 90;
+      object6.position.z = (Math.random() * 40) - 20;
+
+      object6.userData = {
+        URL: 'https://vignette.wikia.nocookie.net/vsbattles/images/b/be/Roxas_%28Art%29_KHD.png/revision/latest?cb=20160217034307'
+      };
+
+      scene.add ( object6 );
+
+      objects.push( object6);
+
+      var object7 = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( {color: 0x5200FF} ));
+       object7.position.x = (Math.random() * 180) - 90;
+       object7.position.y = (Math.random() * 180) - 90;
+       object7.position.z = (Math.random() * 40) - 20;
+
+       object7.userData = {
+         URL: 'https://www.ticalc.org/programming/emulators/software.html'
+       };
+
+       scene.add ( object7 );
+
+       objects.push( object7);
+
+       var object7 = new THREE.Mesh( geometry, new THREE.MeshNormalMaterial());
+        object7.position.x = (Math.random() * 180) - 90;
+        object7.position.y = (Math.random() * 180) - 90;
+        object7.position.z = (Math.random() * 40) - 20;
+
+        object7.userData = {
+          URL: 'https://www.ticalc.org/programming/emulators/software.html'
+        };
+
+        scene.add ( object7 );
+
+        objects.push( object7);
 
 
 
     var render = function() {
            requestAnimationFrame(render);
            //object.rotation.x += 0.05;
-
+           object7.rotation.x += .03;
+         object7.rotation.y -= .03;
+         object7.rotation.z -= .03;
            renderer.render(scene, camera);
 
       }
@@ -128,6 +242,63 @@
         render.render(scene, camera)
       }
 
+      //  renderer.domElement.addEventListener( 'click', raycast, false )
+/*      renderer.domElement.addEventListener( 'touchstart', raycast, true );
+
+      function raycast ( e ){
+        mouse.x =  (touchxcord / window.innerWidth ) * 2 - 1;
+        mouse.y = -( touchycord / window.innerHeight ) * 2 + 1;
+
+    //2. set the picking ray from the camera position and mouse coordinates
+    raycaster.setFromCamera( mouse, camera );
+
+    //3. compute intersections (note the 2nd parameter)
+    var intersects = raycaster.intersectObjects( scene.children );
+    console.log( intersects.length);
+    for ( var i = 0; i < intersects.length; i++ ) {
+        console.log(69);
+        /*
+            An intersection has the following properties :
+                - object : intersected object (THREE.Mesh)
+                - distance : distance from camera to intersection (number)
+                - face : intersected face (THREE.Face3)
+                - faceIndex : intersected face index (number)
+                - point : intersection point (THREE.Vector3)
+                - uv : intersection point in the object's UV coordinates (THREE.Vector2)
+
+    }
+// Step 2: Detect normal objects
+    //1. sets the mouse position with a coordinate system where the center
+    //   of the screen is the origin
+    mouse.x = ( touchxcord / window.innerWidth ) * 2 - 1;
+    mouse.y = - ( touchycord / window.innerHeight ) * 2 + 1;
+    console.log( mouse.x);
+    console.log( mouse.y);
+
+    //2. set the picking ray from the camera position and mouse coordinates
+    raycaster.setFromCamera(mouse, camera );
+
+    //3. compute intersections (no 2nd parameter true anymore)
+    var intersects = raycaster.intersectObjects( objects );
+    console.log( intersects.length);
+    if ( intersects.length > 0 ) {
+        console.log( intersects[ i ] );
+        /*
+            An intersection has the following properties :
+                - object : intersected object (THREE.Mesh)
+                - distance : distance from camera to intersection (number)
+                - face : intersected face (THREE.Face3)
+                - faceIndex : intersected face index (number)
+                - point : intersection point (THREE.Vector3)
+                - uv : intersection point in the object's UV coordinates (THREE.Vector2)
+
+    }
+
+}
+*/
+
+
+
 
 
 
@@ -140,9 +311,9 @@
 
       xcord = e.screenX;
       ycord = e.screenY;
-      screenLog.innerText = `
-        Screen X/Y: ${e.screenX}, ${e.screenY}
-        Touch X/Y: ${e.clientX}, ${e.clientY}`;
+  //    screenLog.innerText = `
+    //    Screen X/Y: ${e.screenX}, ${e.screenY}
+      //  Touch X/Y: ${e.clientX}, ${e.clientY}`;
     }
     document.addEventListener('touchmove', tlogKey);
       function tlogKey(e) {
@@ -151,18 +322,23 @@
 
           touchxcord = parseInt(e.touches[0].clientX);
           touchycord = parseInt(e.touches[0].clientY);
+          mouse.x = ( touchxcord / window.innerWidth ) * 2 - 1;
+          mouse.y = - ( touchycord / window.innerHeight ) * 2 + 1;
 
 
 
-      touchLog.innerText = `
-        Touch X/Y: ${parseInt(e.touches[0].clientX)}, ${parseInt(e.touches[0].clientY)}`;
+    //  touchLog.innerText = `
+    //    Touch X/Y: ${parseInt(e.touches[0].clientX)}, ${parseInt(e.touches[0].clientY)}`;
     }
       var controls = new THREE.DragControls( objects, camera, renderer.domElement );
+      console.log( touchObject());
+
 
       controls.addEventListener( 'dragstart', function ( event ) {
         //  document.getElementById("demo").innerHTML = xcord;
 
           event.object.position.z = 5;
+
 
           //document.getElementById("demo").innerHTML = xcord;
           if(touchycord != 0)
@@ -170,6 +346,8 @@
 
             _mouse.x = touchxcord;
             _mouse.y = touchycord;
+            mouse.x = ( touchxcord / window.innerWidth ) * 2 - 1;
+            mouse.y = - ( touchycord / window.innerHeight ) * 2 + 1;
             pressed = 1;
 
           }
@@ -184,13 +362,13 @@
       controls.addEventListener( 'drag', function ( event ) {
         //  document.getElementById("demo").innerHTML = xcord;
           event.object.position.z = 5;
-          drags.innerText = `
-            started ${touchxcord}, ${touchycord}`
-          document.getElementById("demo").innerHTML = xcord;
+      //    drags.innerText = `
+      //      started ${touchxcord}, ${touchycord}`
+      //    document.getElementById("demo").innerHTML = xcord;
           if (pressed == 1) {
         //    drags.innerText = `
         //      started ${touchxcord}, ${touchycord}`
-        
+
             _mouse.x = touchxcord;
             _mouse.y = touchycord;
             pressed = pressed + 1;
@@ -205,21 +383,49 @@
       controls.addEventListener( 'dragend', function ( event ) {
           //document.getElementById("demo").innerHTML = xcord;
     //      pressed = 0;
+    raycaster.setFromCamera( mouse, camera );
+
+    var intersects = raycaster.intersectObjects( scene.children );
+      console.log(intersects.length);
+    if ( intersects.length > 0 ) {
+        console.log(intersects.length);
+      if ( INTERSECTED != intersects[ 0 ].object ) {
+
+        if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
+        link = intersects[0].object.userData.URL;
+        console.log(link);
+        console.log(intersects[0].object.userData.URL);
+
+      }
+
+    } else {
+
+      if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
+
+      INTERSECTED = null;
+
+    }
            event.object.position.z = 0;
            /*if (_mouse.x < xcord+100 && _mouse.x > xcord-100 && _mouse.y < ycord + 100 && _mouse.y > ycord - 100){
              window.open("https://www.w3schools.com");
            } */
-           drags.innerText = `
-             ended ${touchxcord}, ${touchycord}`
+          // drags.innerText = `
+            // ended ${touchxcord}, ${touchycord}`
+
            if(touchycord =! 0) {
-             if (_mouse.x < touchxcord + 14 && _mouse.x > touchxcord - 14 && _mouse.y < touchycord + 14 && _mouse.y > touchycord - 14){
-               window.open("http://nooooooooooooooo.com/");
-               drags.innerText = `
-                 ended ${touchxcord}, ${touchycord}`
+             if (_mouse.x < touchxcord + 3 && _mouse.x > touchxcord - 3 && _mouse.y < touchycord + 3 && _mouse.y > touchycord - 3){
+              // console.log( controls.touchObject().position.x);
+               //if(touchObject().position.x == object.position.x)
+               //{
+                  window.open(link);
+               //}
+
+              // drags.innerText = `
+                // ended ${touchxcord}, ${touchycord}`
              }
            } else {
              if (_mouse.x == xcord && _mouse.y == ycord){
-               window.open("http://nooooooooooooooo.com/");
+               window.open("[intersects[0].object.userData.URL]");
              }
            }
            pressed = 0;
@@ -231,8 +437,12 @@
 
     render();
 
-    this.tl = new TimelineMax() .delay(.3);
-    this.tl.to(this.object.position, .5, {x: (0), ease: Expo.easeOut})
+
+
+
+
+  //  this.tl = new TimelineMax() .delay(.3);
+  //  this.tl.to(this.object.position, .5, {x: (0), ease: Expo.easeOut})
 
 
 

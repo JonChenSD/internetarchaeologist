@@ -3,6 +3,7 @@
  * @author mrdoob / http://mrdoob.com
  * Running this will allow you to drag three.js objects around the screen.
  */
+  var _obb = null;
 
 THREE.DragControls = function ( _objects, _camera, _domElement ) {
 
@@ -121,6 +122,7 @@ THREE.DragControls = function ( _objects, _camera, _domElement ) {
 		if ( intersects.length > 0 ) {
 
 			_selected = intersects[ 0 ].object;
+      _obb = intersects[ 0 ].object;
 
 			if ( _raycaster.ray.intersectPlane( _plane, _intersection ) ) {
 
@@ -199,6 +201,7 @@ THREE.DragControls = function ( _objects, _camera, _domElement ) {
 		if ( intersects.length > 0 ) {
 
 			_selected = intersects[ 0 ].object;
+      _obb = intersects[ 0 ].object;
 
 			_plane.setFromNormalAndCoplanarPoint( _camera.getWorldDirection( _plane.normal ), _worldPosition.setFromMatrixPosition( _selected.matrixWorld ) );
 
@@ -217,6 +220,8 @@ THREE.DragControls = function ( _objects, _camera, _domElement ) {
 
 
 	}
+
+
 
 	function onDocumentTouchEnd( event ) {
 
@@ -245,6 +250,10 @@ THREE.DragControls = function ( _objects, _camera, _domElement ) {
 	this.dispose = dispose;
 
 };
+
+function touchObject(){
+  return _obb;
+}
 
 THREE.DragControls.prototype = Object.create( THREE.EventDispatcher.prototype );
 THREE.DragControls.prototype.constructor = THREE.DragControls;
