@@ -35,7 +35,7 @@
     var _plane = new THREE.Plane();
     var raycaster = new THREE.Raycaster();
     var _intersection = new THREE.Vector3();
-    var link = "jon";
+    var link = null;
 
     var scene = new THREE.Scene();
     var _mouse = new THREE.Vector2();
@@ -315,7 +315,7 @@
     //    Screen X/Y: ${e.screenX}, ${e.screenY}
       //  Touch X/Y: ${e.clientX}, ${e.clientY}`;
     }
-    document.addEventListener('touchmove', tlogKey);
+    document.addEventListener('touchstart', tlogKey);
       function tlogKey(e) {
 
 
@@ -393,6 +393,7 @@
 
         if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
         link = intersects[0].object.userData.URL;
+        window.open(link);
         console.log(link);
         console.log(intersects[0].object.userData.URL);
 
@@ -412,8 +413,8 @@
           // drags.innerText = `
             // ended ${touchxcord}, ${touchycord}`
 
-           if(touchycord =! 0) {
-             if (_mouse.x < touchxcord + 3 && _mouse.x > touchxcord - 3 && _mouse.y < touchycord + 3 && _mouse.y > touchycord - 3){
+          /*if(touchycord =! 0) {
+             if (mouse.x < touchxcord + 3 && _mouse.x > touchxcord - 3 && _mouse.y < touchycord + 3 && _mouse.y > touchycord - 3){
               // console.log( controls.touchObject().position.x);
                //if(touchObject().position.x == object.position.x)
                //{
@@ -429,7 +430,7 @@
              }
            }
            pressed = 0;
-
+*/
         //   pressed = 0;
 
 
