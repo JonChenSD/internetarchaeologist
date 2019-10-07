@@ -102,11 +102,29 @@
 
     var geometry = new THREE.BoxGeometry( 20, 20, 20 );
 
+
     var objects = [];
 
     var light = new THREE.PointLight(0xFFFFFF, 5, 3000)
     light.position.set(0,0,300)
     scene.add(light);
+
+    for( var i = 0; i < 30; i++){
+      var wallgeometry = new THREE.BoxGeometry( (Math.random()* 2 +1) * 20, (Math.random()* 2 +1) * 20,10 );
+      var wall = new THREE.Mesh( wallgeometry, new THREE.MeshLambertMaterial( {color: 0xCCCCCC} ));
+       wall.position.x = (Math.random() * 180) - 90;
+       wall.position.y = (Math.random() * 180) - 90;
+       wall.position.z = (Math.random() * 90);
+
+       wall.userData = {
+  				URL: null
+  			};
+
+       scene.add ( wall );
+
+       objects.push( wall);
+    }
+
 
     var object = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( {color: 0xffff00} ));
      object.position.x = (Math.random() * 180) - 90;
@@ -213,7 +231,7 @@
         object7.position.z = (Math.random() * 40) - 20;
 
         object7.userData = {
-          URL: 'https://www.ticalc.org/programming/emulators/software.html'
+          URL: 'https://docs.google.com/forms/d/e/1FAIpQLSdVTvUTXgLf_6Kz50Ubdu6T4oriGgyjGUsO1bnCAIShN9vbPw/viewform?usp=sf_link'
         };
 
         scene.add ( object7 );
@@ -337,7 +355,7 @@
       controls.addEventListener( 'dragstart', function ( event ) {
         //  document.getElementById("demo").innerHTML = xcord;
 
-          event.object.position.z = 5;
+          event.object.position.z = event.object.position.z + 5;
 
 
           //document.getElementById("demo").innerHTML = xcord;
@@ -361,7 +379,7 @@
 
       controls.addEventListener( 'drag', function ( event ) {
         //  document.getElementById("demo").innerHTML = xcord;
-          event.object.position.z = 5;
+          event.object.position.z = event.object.position.z + 5;
       //    drags.innerText = `
       //      started ${touchxcord}, ${touchycord}`
       //    document.getElementById("demo").innerHTML = xcord;
@@ -393,7 +411,11 @@
 
         if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
         link = intersects[0].object.userData.URL;
-        window.open(link);
+        if(link != null)
+        {
+          window.open(link);
+        }
+
         console.log(link);
         console.log(intersects[0].object.userData.URL);
 
@@ -406,7 +428,7 @@
       INTERSECTED = null;
 
     }
-           event.object.position.z = 0;
+           event.object.position.z = event.object.position.z - 5;
            /*if (_mouse.x < xcord+100 && _mouse.x > xcord-100 && _mouse.y < ycord + 100 && _mouse.y > ycord - 100){
              window.open("https://www.w3schools.com");
            } */
