@@ -173,18 +173,7 @@
 
    objects.push( object3);
 
-   var object4 = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( {color: 0x0022FF} ));
-    object4.position.x = (Math.random() * 180) - 90;
-    object4.position.y = (Math.random() * 180) - 90;
-    object4.position.z = (Math.random() * 40) - 20;
 
-    object4.userData = {
-      URL: 'https://99designs.com/profiles/1868572'
-    };
-
-       scene.add ( object4 );
-
-       objects.push( object4);
 
     var object5 = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( {color: 0xFF0000} ));
      object5.position.x = (Math.random() * 180) - 90;
@@ -192,7 +181,7 @@
      object5.position.z = (Math.random() * 40) - 20;
 
      object5.userData = {
-       URL: 'https://intarch.ac.uk/'
+       URL: 'https://archive.org/web/'
      };
 
      scene.add ( object5 );
@@ -212,19 +201,7 @@
 
       objects.push( object6);
 
-      var object7 = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( {color: 0x5200FF} ));
-       object7.position.x = (Math.random() * 180) - 90;
-       object7.position.y = (Math.random() * 180) - 90;
-       object7.position.z = (Math.random() * 40) - 20;
-
-       object7.userData = {
-         URL: 'https://www.ticalc.org/programming/emulators/software.html'
-       };
-
-       scene.add ( object7 );
-
-       objects.push( object7);
-
+    
        var object7 = new THREE.Mesh( geometry, new THREE.MeshNormalMaterial());
         object7.position.x = (Math.random() * 180) - 90;
         object7.position.y = (Math.random() * 180) - 90;
@@ -349,7 +326,7 @@
     //    Touch X/Y: ${parseInt(e.touches[0].clientX)}, ${parseInt(e.touches[0].clientY)}`;
     }
       var controls = new THREE.DragControls( objects, camera, renderer.domElement );
-      console.log( touchObject());
+
 
 
       controls.addEventListener( 'dragstart', function ( event ) {

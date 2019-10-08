@@ -251,9 +251,6 @@ THREE.DragControls = function ( _objects, _camera, _domElement ) {
 
 };
 
-function touchObject(){
-  return _obb;
-}
 
 THREE.DragControls.prototype = Object.create( THREE.EventDispatcher.prototype );
 THREE.DragControls.prototype.constructor = THREE.DragControls;
