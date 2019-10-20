@@ -201,7 +201,6 @@
 
       objects.push( object6);
 
-    
        var object7 = new THREE.Mesh( geometry, new THREE.MeshNormalMaterial());
         object7.position.x = (Math.random() * 180) - 90;
         object7.position.y = (Math.random() * 180) - 90;
@@ -304,8 +303,8 @@
 
     function logKey(e) {
 
-      xcord = e.screenX;
-      ycord = e.screenY;
+      xcord = e.clientX;
+      ycord = e.clientY;
   //    screenLog.innerText = `
     //    Screen X/Y: ${e.screenX}, ${e.screenY}
       //  Touch X/Y: ${e.clientX}, ${e.clientY}`;
@@ -343,12 +342,18 @@
             _mouse.y = touchycord;
             mouse.x = ( touchxcord / window.innerWidth ) * 2 - 1;
             mouse.y = - ( touchycord / window.innerHeight ) * 2 + 1;
+            console.log( mouse.x);
+            console.log( mouse.y);
             pressed = 1;
 
           }
           else {
             _mouse.x = xcord;
             _mouse.y = ycord;
+            mouse.x = ( xcord / window.innerWidth ) * 2 - 1;
+            mouse.y = - ( ycord / window.innerHeight ) * 2 + 1;
+            console.log( mouse.x);
+            console.log( mouse.y);
           }
 
 
@@ -360,14 +365,6 @@
       //    drags.innerText = `
       //      started ${touchxcord}, ${touchycord}`
       //    document.getElementById("demo").innerHTML = xcord;
-          if (pressed == 1) {
-        //    drags.innerText = `
-        //      started ${touchxcord}, ${touchycord}`
-
-            _mouse.x = touchxcord;
-            _mouse.y = touchycord;
-            pressed = pressed + 1;
-          }
 
 
 
